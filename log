@@ -199,3 +199,15 @@ graph.c:104:29: error: returning ‘void *’ from a function with return type �
   104 |     if (!label2_cpy) return NULL;
       |                             ^~~~
 88ddfaa
+Fri May 15 01:40:17 AM UTC 2026: 
+ graph.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘getWeight’:
+graph.c:101:32: error: ‘label’ undeclared (first use in this function); did you mean ‘label2’?
+  101 |     char * label1_cpy = strdup(label);
+      |                                ^~~~~
+      |                                label2
+graph.c:101:32: note: each undeclared identifier is reported only once for each function it appears in
+4278ae9
