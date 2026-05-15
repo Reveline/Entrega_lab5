@@ -88,3 +88,31 @@ Fri May 15 12:44:50 AM UTC 2026:
 Fri May 15 12:46:50 AM UTC 2026: 
  tests:  0|0
 aaf03c0
+Fri May 15 12:56:34 AM UTC 2026: 
+ graph.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘addNode’:
+graph.c:42:36: error: passing argument 2 of ‘map_search’ discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+   42 |     if (map_search(g->adjacencyMap,label) != NULL) return;
+      |                                    ^~~~~
+In file included from graph.c:8:
+map.h:22:37: note: expected ‘void *’ but argument is of type ‘const char *’
+   22 | MapPair *map_search(Map *map, void *key);
+      |                               ~~~~~~^~~
+graph.c:46:5: error: expected ‘,’ or ‘;’ before ‘List’
+   46 |     List * new_list = list_create();
+      |     ^~~~
+graph.c:47:24: error: ‘new_list’ undeclared (first use in this function)
+   47 |     if (!label_cpy || !new_list) return;
+      |                        ^~~~~~~~
+graph.c:47:24: note: each undeclared identifier is reported only once for each function it appears in
+graph.c:49:53: error: expected ‘;’ before ‘}’ token
+   49 |     map_insert(g->adjacencyMap, label_cpy, new_list)
+      |                                                     ^
+      |                                                     ;
+   50 | }
+      | ~                                                    
+cc1: all warnings being treated as errors
+14c4c43
