@@ -84,7 +84,7 @@ List* getEdges(Graph* g, const char* label) {
     if (!g || !label) return NULL;
     
     char * label_cpy = strdup(label); // El duplicado queda guardado en la memoria dinamica
-    if (!label_cpy) return;
+    if (!label_cpy) return NULL;
 
     MapPair * label_node = map_search(g->adjacencyMap, label_cpy);
     if (!label_node->value) return NULL; 
