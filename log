@@ -216,3 +216,15 @@ Fri May 15 01:40:34 AM UTC 2026:
  1 file changed, 2 insertions(+), 2 deletions(-)
  tests:  0|0
 7438fca
+Fri May 15 01:41:13 AM UTC 2026: 
+ graph.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘getWeight’:
+graph.c:112:20: error: ‘label2_cpy’ undeclared (first use in this function); did you mean ‘label2’?
+  112 |         if (strcmp(label2_cpy,aux_edge->target) == 0) break;
+      |                    ^~~~~~~~~~
+      |                    label2
+graph.c:112:20: note: each undeclared identifier is reported only once for each function it appears in
+623104c
