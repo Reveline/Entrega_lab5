@@ -10,3 +10,16 @@ Fri May 15 12:06:44 AM UTC 2026:
  tests:  0|6
 ========================================
 c02545c
+Fri May 15 12:20:23 AM UTC 2026: 
+ graph.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘createGraph’:
+graph.c:34:42: error: too few arguments to function ‘is_equal_string’
+   34 |     new_graph->adjacencyMap = map_create(is_equal_string());
+      |                                          ^~~~~~~~~~~~~~~
+graph.c:21:5: note: declared here
+   21 | int is_equal_string(void *key1, void *key2) {
+      |     ^~~~~~~~~~~~~~~
+42b0414
