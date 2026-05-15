@@ -104,7 +104,7 @@ int getWeight(Graph* g, const char* label1, const char* label2) {
     if (!label2_cpy) return -1;
     // Obtencion de lista */
     List * edge_list = getEdges(g,label1);
-
+    if (!edge_list) return -1;
     // iteracion
 
     Edge * aux_edge = list_first(edge_list);     
