@@ -272,3 +272,13 @@ graph.c:126:54: error: invalid application of ‘sizeof’ to incomplete type �
   126 |     List * adjacent_targets = (List *) malloc(sizeof(List));
       |                                                      ^~~~
 a94a067
+Fri May 15 06:45:51 PM UTC 2026: 
+ graph.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘getAdjacentLabels’:
+graph.c:126:54: error: invalid application of ‘sizeof’ to incomplete type ‘List’
+  126 |     List * adjacent_targets = (List *) malloc(sizeof(List));
+      |                                                      ^~~~
+2e890cf

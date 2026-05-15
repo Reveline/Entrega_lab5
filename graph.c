@@ -120,7 +120,7 @@ int getWeight(Graph* g, const char* label1, const char* label2) {
 List* getAdjacentLabels(Graph* g, const char* label) {
     if (!g || !label) return NULL;
     
-    List * edge_list = getEdges(g,label1);
+    List * edge_list = getEdges(g,label);
     if (!edge_list) return NULL;
 
     List * adjacent_targets = (List *) malloc(sizeof(List));
