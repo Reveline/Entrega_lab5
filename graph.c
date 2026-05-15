@@ -31,7 +31,7 @@ Graph* createGraph() {
     // 2. Inicialice g->adjacencyMap
     // 3. Retorne el grafo
     Graph* new_graph = (Graph*)malloc(sizeof(Graph));
-    new_graph->adjacencyMap = map_create(is_equal_string());
+    new_graph->adjacencyMap = map_create(is_equal_string(void *key1, void *key2));
     return new_graph;
 }
 
