@@ -162,3 +162,16 @@ Fri May 15 01:18:20 AM UTC 2026:
  1 file changed, 24 insertions(+), 4 deletions(-)
  tests:  0|0
 385ebe5
+Fri May 15 01:23:31 AM UTC 2026: 
+ graph.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘getEdges’:
+graph.c:87:21: error: ‘return’ with no value, in function returning non-void [-Wreturn-mismatch]
+   87 |     if (!label_cpy) return;
+      |                     ^~~~~~
+graph.c:83:7: note: declared here
+   83 | List* getEdges(Graph* g, const char* label) {
+      |       ^~~~~~~~
+e6dc5e2

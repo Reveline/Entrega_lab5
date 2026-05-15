@@ -83,7 +83,15 @@ void addEdge(Graph* g, const char* src, const char* dest, int weight) {
 List* getEdges(Graph* g, const char* label) {
     if (!g || !label) return NULL;
     
-    return NULL;
+    char * label_cpy = strdup(label); // El duplicado queda guardado en la memoria dinamica
+    if (!label_cpy) return;
+
+    MapPair * label_node = map_search(g->adjacencyMap, label_cpy);
+    if (!label_node->value) return NULL; 
+    List * edge_list = label_node->value;
+    if (!edge_list) return NULL;
+    
+    return edge_list;
 }
 
 int getWeight(Graph* g, const char* label1, const char* label2) {
