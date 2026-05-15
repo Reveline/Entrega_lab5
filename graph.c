@@ -48,7 +48,7 @@ void addNode(Graph* g, const char* label) {
     if (!label_cpy || !new_list) return;
     
     // Insercion del par
-    map_insert(g->adjacencyMap, label_cpy, new_list)
+    map_insert(g->adjacencyMap, label_cpy, new_list);
 }
 
 void addEdge(Graph* g, const char* src, const char* dest, int weight) {
