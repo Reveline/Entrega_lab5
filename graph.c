@@ -97,8 +97,26 @@ List* getEdges(Graph* g, const char* label) {
 int getWeight(Graph* g, const char* label1, const char* label2) {
     if (!g || !label1 || !label2) return -1;
 
-    // Si no existe el origen o terminamos de iterar sin encontrar el destino
-    return -1; 
+    // Varaiables
+    char * label1_cpy = strdup(label);
+    if (!label1_cpy) return NULL;
+    char * label2_cpy = strdup(label);
+    if (!label2_cpy) return NULL;
+    // Obtencion de lista
+    List * edge_list = getEdges(g,label1_cpy);
+
+    // iteracion
+
+    Edge * aux_edge = list_first(edge_list);     
+    while (aux_edge != NULL) {
+        if (strcmp(label2_cpy,aux_edge->target) == 0) break;
+        aux_edge = list_next(edge_list);
+    }
+
+    if (!aux_edge) return -1; // Si no existe el origen o terminamos de iterar sin encontrar el destino
+
+    return aux_edge->weight;
+    
 }
 
 // Retorna una nueva List* que contiene elementos de tipo char* (las etiquetas)
