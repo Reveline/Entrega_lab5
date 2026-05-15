@@ -123,7 +123,7 @@ List* getAdjacentLabels(Graph* g, const char* label) {
     List * edge_list = getEdges(g,label);
     if (!edge_list) return NULL;
 
-    List * adjacent_targets = (List *) malloc(sizeof(List));
+    List * adjacent_targets = list_create();
     if (!adjacent_targets) return NULL;
     
     Edge * aux_edge = list_first(edge_list);     
