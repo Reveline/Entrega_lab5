@@ -39,13 +39,17 @@ Graph* createGraph() {
 void addNode(Graph* g, const char* label) {
     if (!g || !label) return;
     // Primero, debe verificar si el nodo ya existe en el adjacencyMap. Si ya existe, la función no debe hacer nada.
-    if (map_search(g->adjacencyMap,label) != NULL) return;
     
     // Si no existe, debe crear una copia del string label (usando strdup o malloc + strcpy), crear una nueva lista vacía (que almacenará sus futuras aristas) e insertar el par (copia_label, nueva_lista) en el mapa.
-    // El duplicado queda guardado en la memoria dinamica
-    char * label_cpy = strdup(label);
+    
+    char * label_cpy = strdup(label); // El duplicado queda guardado en la memoria dinamica
+    if (!label_cpy) return;
+    
+    if (map_search(g->adjacencyMap,label_cpy) != NULL) return;
+    
     List * new_list = list_create(); 
-    if (!label_cpy || !new_list) return;
+
+    if (!new_list) return;
     
     // Insercion del par
     map_insert(g->adjacencyMap, label_cpy, new_list);
