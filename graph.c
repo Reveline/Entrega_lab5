@@ -95,31 +95,45 @@ List* getEdges(Graph* g, const char* label) {
     return edge_list;
 }
 
+// Obtiene el peso de la arista que conecta label1 con label2.
 int getWeight(Graph* g, const char* label1, const char* label2) {
+    // Verificacion de la existencia del grafo y los elementos
     if (!g || !label1 || !label2) return -1;
-    
+
+    // Obtencion de la lista de aristas del elemento 1
     List * edge_list = getEdges(g,label1);
     if (!edge_list) return -1;
-    // iteracion
-
+    // Iteracion para buscar arista que conecte a los dos elementos
     Edge * aux_edge = list_first(edge_list);     
     while (aux_edge != NULL) {
         if (strcmp(label2,aux_edge->target) == 0) break;
         aux_edge = list_next(edge_list);
     }
+    
+    if (!aux_edge) return -1; // Si no existe el origen o la lista se termina y no se encontró el destino 
 
-    if (!aux_edge) return -1; // Si no existe el origen o terminamos de iterar sin encontrar el destino
-
-    return aux_edge->weight;
+    return aux_edge->weight; // Retorno del peso de la aritsa
     
 }
 
 // Retorna una nueva List* que contiene elementos de tipo char* (las etiquetas)
 List* getAdjacentLabels(Graph* g, const char* label) {
     if (!g || !label) return NULL;
+    
+    List * edge_list = getEdges(g,label1);
+    if (!edge_list) return NULL;
 
-
-    return NULL; 
+    List * adjacent_targets = (List *) malloc(sizeof(List));
+    if (!adjacent_targets) return NULL;
+    
+    Edge * aux_edge = list_first(edge_list);     
+    while (aux_edge != NULL) {
+        list_pushBack(adjacent_targets, aux_edge->target);
+        aux_edge = list_next(edge_list);
+    }
+    
+    if (!adjacent_targets) return NULL;
+    return adjacent_targets; 
 }
 
 void destroyGraph(Graph* g) {
