@@ -38,15 +38,16 @@ Graph* createGraph() {
 
 void addNode(Graph* g, const char* label) {
     if (!g || !label) return;
-    // Primero, debe verificar si el nodo ya existe en el adjacencyMap. Si ya existe, la función no debe hacer nada.
-    
-    // Si no existe, debe crear una copia del string label (usando strdup o malloc + strcpy), crear una nueva lista vacía (que almacenará sus futuras aristas) e insertar el par (copia_label, nueva_lista) en el mapa.
-    
+    /* Primero, debe verificar si el nodo ya existe en el adjacencyMap. Si ya existe, la función no debe hacer nada.
+    Si no existe, debe crear una copia del string label (usando strdup o malloc + strcpy), crear una nueva lista vacía (que almacenará sus futuras aristas) e insertar el par (copia_label, nueva_lista) en el mapa.*/
+    //---------------funcion-------------
+    // Se realiza un duplicado del string, se comprueba si es nulo y se busca en el mapa
     char * label_cpy = strdup(label); // El duplicado queda guardado en la memoria dinamica
     if (!label_cpy) return;
     
     if (map_search(g->adjacencyMap,label_cpy) != NULL) return;
-    
+
+    // Se crea lista para los nodos adjacentes
     List * new_list = list_create(); 
 
     if (!new_list) return;
@@ -57,12 +58,31 @@ void addNode(Graph* g, const char* label) {
 
 void addEdge(Graph* g, const char* src, const char* dest, int weight) {
     if (!g || !src || !dest) return;
+    
+    char * src_cpy = strdup(src); // El duplicado queda guardado en la memoria dinamica
+    if (!src_cpy) return;
 
+    char * src_dest = strdup(dest);
+    if (!src_dest) return;
+
+    
+    
+    MapPair * src_node = map_search(g->adjacencyMap, src_cpy);
+    if (!src_node->value) return; 
+    List * edge_list = src_node->value;
+
+    Edge * new_edge = (Edge *)malloc(sizeof(Edge));
+    if( !new_edge) return;
+
+    new_edge->target = src_dest;
+    new_edge->weight = weight;
+
+    list_pushFront(edge_list,new_edge);
 }
 
 List* getEdges(Graph* g, const char* label) {
     if (!g || !label) return NULL;
-
+    
     return NULL;
 }
 
