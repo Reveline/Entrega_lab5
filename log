@@ -39,3 +39,17 @@ graph.c:21:5: note: declared here
    21 | int is_equal_string(void *key1, void *key2) {
       |     ^~~~~~~~~~~~~~~
 c6cb713
+Fri May 15 12:21:03 AM UTC 2026: 
+ graph.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘createGraph’:
+graph.c:34:31: error: too few arguments to function ‘map_create’
+   34 |     new_graph->adjacencyMap = map_create();
+      |                               ^~~~~~~~~~
+In file included from graph.c:8:
+map.h:14:6: note: declared here
+   14 | Map *map_create(int (*is_equal)(void *key1, void *key2)); // unsorted map
+      |      ^~~~~~~~~~
+613bc79
